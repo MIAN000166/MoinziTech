@@ -37,17 +37,17 @@ class RegistrationController extends Controller
         $validator = Validator::make($request->all(), [
 //            "first_name"=>"required|min:3|max:50",
             "username"=>"required|max:50|min:3|unique:users,username",
-            "name"=>"required|max:30|min:3",
-            "city"=>"required|max:50",
-            "region"=>"required|max:50",
-            "address"=>"required|max:500",
-            "authorized_rep_name"=>"required|max:20|min:3",
+            "name"=>"required|max:100|min:1",
+            "city"=>"required|max:100",
+            "region"=>"required|max:100",
+            "address"=>"required|max:1000",
+            "authorized_rep_name"=>"required|max:100|min:1",
             "authorized_rep_phone"=>"required|max:25",
 //           "phone"=>"required|max:20",
 //            "last_name"=>"required|max:50|min:3",
-            "email"=>"required|unique:users|email|max:30|min:11",
-            "phone"=>"required|min:3|max:30",
-            "password"=>"required|min:4|max:16",
+            "email"=>"required|unique:users|email|max:1000",
+            "phone"=>"required|min:1|max:30",
+            "password"=>"required|min:4|max:20",
 
 
         ]);

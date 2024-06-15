@@ -34,17 +34,17 @@ class RegistrationController extends Controller
 
 
         $validator = Validator::make($request->all(), [
-            "name"=>"required|min:3|max:50",
+            "name"=>"required|min:1|max:100",
             "username"=>"required|max:50|min:3|unique:users,username",
-            "email"=>"required|unique:users|email|max:30|min:11",
+            "email"=>"required|unique:users|email|max:100",
             "phone"=>"required|min:3|max:30",
-            "mmed_graduation_year"=>"required|max:20",
+            "mmed_graduation_year"=>"required|max:50",
             "mmed_completed_from"=>"required|max:50",
             "experience"=>"required|numeric|digits_between:0,100",
-            "mct_number"=>"required|max:20",
+            "mct_number"=>"required|max:50",
             "mmed_certificate"=>"required|mimes:jpeg,png,jpg,gif,pdf|max:5048",
             "mct_license"=>"required|mimes:jpeg,png,jpg,gif,pdf|max:5048",
-            "cv"=>"required|mimes:jpeg,png,jpg,pdf|max:10048",
+            "cv"=>"required|mimes:jpeg,png,jpg,pdf|max:90048",
             "password"=>"required|min:4|max:16",
 
 
