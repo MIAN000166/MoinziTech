@@ -260,53 +260,6 @@ public function checked_reports(){
 
 }
 
-public function add_extra_file(Request $request)
-{
-    $validator = Validator::make($request->all(), [
 
-        'doc_file' => ['required', 'file', 'mimes:doc,docx'],
-        'id'=>"required|numeric|exists:reports,id",
-    ]);
-    if ($validator->fails()) {
-
-        $response = [
-            'status' => false,
-            'errors' => $validator->errors(),
-            'message' => "Validation Fails",
-        ];
-
-
-        return response()->json($response, 404);
-    }
-
-    if ($request->hasFile('doc_file')) {
-//        dd($request->user()->id);
-        $report =  Report::where(['id'=>$request->id,'hospital_id'=>$request->user()->id])->first();
-        $image = $request->file('doc_file');
-        $imageName = time().'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('doc/file'), $imageName);
-        $imagePath = asset('/doc/file/' . $imageName);
-        $report->image_path2 = $imagePath;
-        $report->save();
-        $response = [
-            'status' => true,
-            'data'=>$report->image_path2,
-            'message' => "success",
-        ];
-        return response()->json($response, 200);
-    }
-
-
-    $errors=array(
-        'errors'=>["invalid id"],
-    );
-    $response = [
-        'status' => false,
-        'errors'    => $errors,
-        'message' => "failed",
-    ];
-    return response()->json($response, 404);
-
-}
 }
 

@@ -45,13 +45,14 @@ Route::middleware('auth:api')->group( function () {
     Route::get('admin/track/count',[\App\Http\Controllers\Admin\TrackController::class,'track_count']);
     Route::post('admin/auto/case/assigning',[\App\Http\Controllers\Admin\ReportController::class,'auto_assign_case']);
     Route::get('admin/get/toggle/status',[\App\Http\Controllers\Admin\TrackController::class,'toggle_status']);
+    Route::post('admin/add/excel/file',[\App\Http\Controllers\Admin\ReportController::class,'add_extra_file']);
+
 //Admin auth routes end
 //    abc
 
 //Hospital Auth routes
     Route::post('hospital/logout',[\App\Http\Controllers\Hospital\LoginController::class,'logout']);
     Route::post('hospital/add/patient/report',[\App\Http\Controllers\Hospital\ReportController::class,'store']);
-    Route::post('hospital/add/excel/file',[\App\Http\Controllers\Hospital\ReportController::class,'add_extra_file']);
     Route::get('hospital/reports', [\App\Http\Controllers\Hospital\ReportController::class,'index']);
     Route::get('hospital/get/single/report/{id}', [\App\Http\Controllers\Hospital\ReportController::class,'single_report']);
     Route::post('hospital/update/report', [\App\Http\Controllers\Hospital\ReportController::class,'update']);
