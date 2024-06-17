@@ -36,6 +36,7 @@ Route::middleware('auth:api')->group( function () {
     Route::post('admin/add/report/comment',[\App\Http\Controllers\Admin\ReportController::class,'add_comment']);
     Route::post('admin/get/checked/reports',[\App\Http\Controllers\Admin\ReportController::class,'get_checked_reports']);
     Route::get('admin/checked/reports',[\App\Http\Controllers\Admin\ReportController::class,'checked_reports']);
+    Route::post('admin/update/user/password',[\App\Http\Controllers\Admin\UserController::class,'update_password']);
 
     Route::post('admin/case/taking/self',[\App\Http\Controllers\Admin\ReportController::class,'self_taking']);
     Route::get('admin/get/all/radiologists',[\App\Http\Controllers\Admin\UserController::class,'all_radiologists']);

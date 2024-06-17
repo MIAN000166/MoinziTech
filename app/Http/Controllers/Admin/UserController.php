@@ -214,4 +214,36 @@ class UserController extends Controller
         ];
         return response()->json($response, 200);
     }
+    public function update_password(Request $request){
+        $validator = Validator::make($request->all(), [
+ 
+          "password"=>"required|min:4|max:20",
+            "id"=>"required|numeric|exists:users,id|between:1,999999999"
+        ]);
+
+        if($validator->fails()){
+
+            $response = [
+                'status' => false,
+                'errors'    => $validator->errors(),
+                'message' => "Validation Fails",
+            ];
+
+
+            return response()->json($response, 404);
+
+        }
+
+        $user=User::where('id',$request->id)->first();
+        $user->password=bcrypt($request->password);
+        $user->save();
+        $response = [
+            'status' => true,
+            'data'    => $user,
+            'message' => "Password Updated",
+        ];
+        return response()->json($response, 200);
+
+
+    }
 }
