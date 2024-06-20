@@ -78,6 +78,7 @@ Route::middleware('auth:api')->group( function () {
     Route::get('radiologist/get/pending/reports',[\App\Http\Controllers\Radiologist\ReportController::class,'pending_reports']);
     Route::get('radiologist/report/track',[\App\Http\Controllers\Radiologist\ReportController::class,'track']);
     Route::post('radiologist/filter/checked/reports',[\App\Http\Controllers\Radiologist\ReportController::class,'filter_reports']);
+    Route::post('radiologist/add/extra/file',[\App\Http\Controllers\Radiologist\ReportController::class,'add_extra_file']);
 //Radiologist auth routes end
 
 });
