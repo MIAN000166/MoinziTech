@@ -86,9 +86,12 @@ class LoginController extends Controller
 
         }
         else{
+            $errors=array(
+                'errors'=>["Invalid Credentials"],
+            );
             $response = [
                 'status' => false,
-                'errors'    => 'Invalid Credentials',
+                'errors'    => $errors,
                 'message' => "Unauthorised",
             ];
 
